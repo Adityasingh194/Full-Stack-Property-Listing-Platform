@@ -17,7 +17,6 @@ module.exports.createListing = async (req, res, next) => {
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
 
-    // Check if an image was uploaded
     if (req.file) {
       newListing.image = {
         url: req.file.path,
@@ -29,6 +28,7 @@ module.exports.createListing = async (req, res, next) => {
     req.flash("success", "New listing created!");
     res.redirect("/listings");
   } catch (err) {
+    console.error(" Error while creating listing:", err); 
     next(err);
   }
 };
