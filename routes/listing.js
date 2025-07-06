@@ -38,6 +38,8 @@ async function isOwner(req, res, next) {
 // ============================
 //          ROUTES
 // ============================
+// Show all listings on home page
+router.get("/", listingController.showAllListings);
 
 // Show all listings
 router.get("/listings", listingController.showAllListings);
